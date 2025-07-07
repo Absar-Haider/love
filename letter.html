@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mera golu </title>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="left-card">
+
+            <div class="card-front">
+                <img src="cover.jpg" alt="cover">
+            </div>
+
+            <div class="card-back">
+                
+                <h2>હેલો મેડમ જી મને ખબર નથી કે આ અનુવાદક કામ કરી રહ્યું છે કે નહીં પરંતુ હું તમને જણાવવા માંગુ છું કે હું તમને કેટલો પ્રેમ કરું છું અને હું ઇચ્છું છું કે તમે મારી બાજુમાં રહો, હું મારા વિશે કંઇક કરીશ નહીં અથવા નહીં બદલી શકું જે તમને દુtsખ પહોંચાડે છે.</h2>
+
+            </div>
+
+        </div>
+
+        <div class="right-card">
+
+            <h2>હું તમને પ્રેમ કરું છું અને હું તમને મરણોત્તર જીવન સુધી પ્રેમ કરીશ, પછી ભલે આપણે કેટલા ઝઘડા કરીએ, હું હંમેશાં તમને બીજા કોઈની સમક્ષ પસંદ કરીશ. હું જે વસ્તુઓ પસંદ કરું છું અને તેની સંભાળ રાખું છું તે વિશે હું ધરાવતો છું, શું તમે આ મારા જાનને સમજો છો</h2>
+
+            <p>By your loving bf Absar 💋</p>
+
+        </div>
+
+    </div>
+
+    <style>
+
+        body{
+            margin: 100px;
+            background-color: pink;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-image: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            background-size: 400px 400px;
+            animation: move 10s ease infinite;
+        }
+
+        @keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 400px 400px;
+            }
+        }
+
+        .heart {
+            position: absolute;
+            pointer-events: none;
+            animation: float linear infinite;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-50px) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(90deg);
+                opacity: 0;
+            }
+        }
+
+        .card{
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+            perspective: 1400px;
+        }
+        .left-card{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            box-shadow: 5px 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            transform-origin: 0 0;
+        }
+        .left-card .card-front,
+        .left-card .card-back{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            backface-visibility: hidden;
+        }
+        .left-card .card-back{
+            background: #f4f4f4;
+            transform: rotateY(180deg);
+        }
+        .card.open .left-card{
+            transform: rotateY(-180deg);
+        }
+        .left-card img{
+            width: 100%;
+            height: 97%;
+        }
+        .right-card{
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            text-align: center;
+            padding: 30px;
+            box-sizing: border-box;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            color: #444;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .right-card p{
+            color: crimson;
+        }
+
+        .card-back{
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            text-align: center;
+            padding: 30px;
+            box-sizing: border-box;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            color: #444;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .card-back h2{
+            color: crimson;
+        }
+
+        .right-card h2{
+            color: crimson;
+        }
+
+    </style>
+
+    <script>
+
+        const card = document.querySelector('.card');
+        card.addEventListener('click', function() {
+            card.classList.toggle('open')
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤';
+            
+            heart.style.left = Math.random() * 99 + 'vw';
+            heart.style.top = Math.random() * 96 + 'vh';
+            
+            const duration = Math.random() * 4 + 4;
+            heart.style.animationDuration = duration + 's';
+            
+            const size = Math.random() * 20 + 10;
+            heart.style.fontSize = size + 'px';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000)
+        }
+        
+        // Create initial hearts
+        for (let i = 0; i < 30; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+        
+        // Continuously create hearts
+        setInterval(createHeart, 300);
+        
+    </script>
+
+</body>
+</html>
+
+<!-- edit this code to have a animated background with heart floating around? -->
